@@ -23,9 +23,7 @@ pose_model = pose_tools.Pose()
 hand_tools = mp.solutions.hands
 hand_model = hand_tools.Hands()
 
-
 videos = os.listdir("../data/signs/videos/")
-
 
 bar = tqdm(total=len(videos))
 
@@ -40,7 +38,6 @@ try:
         capture = cv2.VideoCapture(video)
         while capture.isOpened():
             success, frame = capture.read()
-
             if not success:
                 break
 

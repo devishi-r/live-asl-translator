@@ -49,10 +49,10 @@ def get_landmark_points_faiss_aware(word, cursor):
 def parse_frames(raw_frames):
     parsed_frames = []
     for frame_data in raw_frames:
-        # frame_data example: [frame_number, pose_landmarks, hand_landmarks]
+        # frame_data = [frame_number, pose_landmarks, hand_landmarks]
         frame_number, pose_landmarks_raw, hand_landmarks_raw = frame_data
 
-        # Convert landmarks into dicts for pose and hands
+        # landmarks to dicts for pose and hands
         pose_landmarks = {}
         if pose_landmarks_raw:
             for landmark in pose_landmarks_raw:
@@ -151,7 +151,6 @@ def on_connect(sentence):
                 frame["word"] = ""  # optional: blank or "transition"
             full_animation.extend(interp)
 
-    # Setup OpenCV window and writer
     frame_width, frame_height = 640, 480
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     out = cv2.VideoWriter('output.avi', fourcc, 20.0, (frame_width, frame_height))

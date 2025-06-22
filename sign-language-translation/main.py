@@ -9,7 +9,7 @@ def run_script(script_name):
         print(f"Error running {script_name}.")
         print(result.stderr)
 
-scripts = ['convert_videos_to_points.py', 'embed_database_words.py', 'debugging_test.py']
+scripts = ['convert_videos_to_points.py', 'build_faiss_index.py', 'render_animation.py']
 
 for script in scripts:
     run_script(script)
