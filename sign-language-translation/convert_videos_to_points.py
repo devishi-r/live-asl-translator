@@ -5,14 +5,14 @@ import dotenv
 import psycopg2
 from tqdm import tqdm
 import mediapipe as mp
-
-dotenv.load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 conn = psycopg2.connect(
     database="postgres",
     host="localhost",
     user="postgres",
-    password="os.getenv('POSTGRES_PASSWORD')",
+    password=os.getenv('POSTGRES_PASSWORD'),
     port=5432,
 )
 cur = conn.cursor()

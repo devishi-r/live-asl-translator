@@ -3,13 +3,15 @@ import os
 import psycopg2
 from pgvector.psycopg2 import register_vector
 from sentence_transformers import SentenceTransformer
+from dotenv import load_dotenv
+load_dotenv()
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 conn = psycopg2.connect(
     database="postgres",
     host="localhost",
     user="postgres",
-    password="os.getenv('POSTGRES_PASSWORD')",
+    password=os.getenv('POSTGRES_PASSWORD'),
     port=5432,
 )
 register_vector(conn)

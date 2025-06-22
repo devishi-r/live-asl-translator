@@ -2,6 +2,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import psycopg2
+import os
 
 # Load model
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -11,7 +12,7 @@ conn = psycopg2.connect(
     database="postgres",
     host="localhost",
     user="postgres",
-    password="passw0rd",
+    password="os.getenv('POSTGRES_PASSWORD')",
     port=5432,
 )
 cur = conn.cursor()

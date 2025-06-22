@@ -1,17 +1,21 @@
 from sentence_transformers import SentenceTransformer
+from dotenv import load_dotenv
 import psycopg2
 import faiss
 import numpy as np
 import json
 import mediapipe as mp  
 import cv2
+import os
+
+load_dotenv()
 
 conn = psycopg2.connect(
     database="postgres",
     host="localhost",
     user="postgres",
     port=5432,
-    password="passw0rd"
+    password=os.getenv('POSTGRES_PASSWORD')
 )
 
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")

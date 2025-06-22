@@ -3,13 +3,16 @@ import psycopg2
 import numpy as np
 import json
 import faiss
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Step 1: Connect to PostgreSQL
 conn = psycopg2.connect(
     database="postgres",
     host="localhost",
     user="postgres",
-    password="passw0rd",
+    password=os.getenv('POSTGRES_PASSWORD'),
     port=5432
 )
 cursor = conn.cursor()
